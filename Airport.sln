@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport", "Airport\Airport.csproj", "{F7FBA00A-58FF-4B04-920E-323250C3CDC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Airport.WEB", "Airport.WEB\Airport.WEB.csproj", "{F7FBA00A-58FF-4B04-920E-323250C3CDC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.Entities", "Airport.Entities\Airport.Entities.csproj", "{1AA68E87-C35B-4B2D-95BA-EAF333BEC4AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.Data", "Airport.Data\Airport.Data.csproj", "{88C1AE4C-D4F7-47EE-978E-1A3381DEC864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airport.API", "Airport.API\Airport.API.csproj", "{8402E4D5-8D7D-45EA-AF3B-BF16946C1193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{F7FBA00A-58FF-4B04-920E-323250C3CDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7FBA00A-58FF-4B04-920E-323250C3CDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7FBA00A-58FF-4B04-920E-323250C3CDC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA68E87-C35B-4B2D-95BA-EAF333BEC4AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA68E87-C35B-4B2D-95BA-EAF333BEC4AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA68E87-C35B-4B2D-95BA-EAF333BEC4AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA68E87-C35B-4B2D-95BA-EAF333BEC4AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88C1AE4C-D4F7-47EE-978E-1A3381DEC864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88C1AE4C-D4F7-47EE-978E-1A3381DEC864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88C1AE4C-D4F7-47EE-978E-1A3381DEC864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88C1AE4C-D4F7-47EE-978E-1A3381DEC864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8402E4D5-8D7D-45EA-AF3B-BF16946C1193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8402E4D5-8D7D-45EA-AF3B-BF16946C1193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8402E4D5-8D7D-45EA-AF3B-BF16946C1193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8402E4D5-8D7D-45EA-AF3B-BF16946C1193}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

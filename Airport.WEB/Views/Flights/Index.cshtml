@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Airport.Entities.Models.FlightDto>
+
+@{
+    ViewData["Title"] = "Flights";
+}
+
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Airport</h1>
+        <p class="lead text-muted">The Airport is an MVC project in ASP.NET core for an flight-company. The aiport is consuming an API to handle all flight requests.</p>
+        @*<p>
+                <a href="#" class="btn btn-primary my-2">Main call to action</a>
+                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            </p>*@
+    </div>
+</section>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row">
+            @foreach (var flightItem in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>@Html.DisplayFor(modelItem => flightItem.FromLocation) - @Html.DisplayFor(modelItem => flightItem.ToLocation)</title><rect fill="#55595c" width="100%" height="100%" /><text fill="#eceeef" dy=".3em" x="50%" y="50%">@Html.DisplayFor(modelItem => flightItem.FromLocation) - @Html.DisplayFor(modelItem => flightItem.ToLocation)</text></svg>
+                        <div class="card-body">
+                            <p class="card-text">@Html.DisplayFor(modelItem => flightItem.FromLocation) - @Html.DisplayFor(modelItem => flightItem.ToLocation)</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" id="addressSearch" onclick="location.href='@Url.Action("Details", "flights")/@flightItem.FlightNumber'">Details</button>
+                                </div>
+                                <small class="text-muted">Departure @Html.DisplayFor(modelItem => flightItem.DepartureTime.TimeOfDay)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

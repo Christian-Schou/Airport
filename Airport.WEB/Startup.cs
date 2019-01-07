@@ -46,6 +46,8 @@ namespace Airport
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseStatusCodePages();
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
@@ -53,7 +55,7 @@ namespace Airport
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Flights}/{action=Index}/{id?}");
             });
         }
     }
