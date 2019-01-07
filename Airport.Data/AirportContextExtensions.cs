@@ -31,7 +31,17 @@ namespace Airport.Data
                     FromLocation = "Copenhagen",
                     ToLocation = "Amsterdam",
                     DepartureTime = DateTime.Today,
-                    ArrivalTime = DateTime.Today.AddHours(2)
+                    ArrivalTime = DateTime.Today.AddHours(1)
+
+                },
+                // Copenhagen - Amsterdam
+                new Flight()
+                {
+                    AircraftType = "Boing 777 Jet",
+                    FromLocation = "Copenhagen",
+                    ToLocation = "Amsterdam",
+                    DepartureTime = DateTime.Today.AddHours(4),
+                    ArrivalTime = DateTime.Today.AddHours(5)
 
                 },
 
@@ -40,7 +50,7 @@ namespace Airport.Data
                 {
                     AircraftType = "Boing 777 Jet",
                     FromLocation = "Copenhagen",
-                    ToLocation = "London",
+                    ToLocation = "Amsterdam",
                     DepartureTime = DateTime.Today.AddHours(5),
                     ArrivalTime = DateTime.Today.AddHours(6)
                 },
@@ -54,6 +64,24 @@ namespace Airport.Data
                     DepartureTime = DateTime.Today.AddHours(8),
                     ArrivalTime = DateTime.Today.AddDays(1)
                 },
+
+                new Flight()
+                {
+                    AircraftType = "Airbus A380",
+                    FromLocation = "London",
+                    ToLocation = "New York",
+                    DepartureTime = DateTime.Today.AddHours(15),
+                    ArrivalTime = DateTime.Today.AddDays(1)
+                },
+
+                new Flight()
+                {
+                    AircraftType = "Dreamliner",
+                    FromLocation = "Hamburg",
+                    ToLocation = "Barcelona",
+                    DepartureTime = DateTime.Today.AddHours(15).AddMinutes(15),
+                    ArrivalTime = DateTime.Today.AddHours(18).AddMinutes(30)
+                }
 
             };
 

@@ -28,10 +28,10 @@
                         <div class="card-body">
                             <p class="card-text">@Html.DisplayFor(modelItem => flightItem.FromLocation) - @Html.DisplayFor(modelItem => flightItem.ToLocation)</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-secondary" type="button" id="addressSearch" onclick="location.href='@Url.Action("Details", "flights")/@flightItem.FlightNumber'">Details</button>
-                                </div>
-                                <small class="text-muted">Departure @Html.DisplayFor(modelItem => flightItem.DepartureTime.TimeOfDay)</small>
+                                @*<div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" id="addressSearch" onclick="location.href='@Url.Action("Edit", "flights")/@flightItem.FlightNumber'">Edit</button>
+                                </div>*@
+                                <small class="text-muted">Departure @Html.DisplayFor(modelItem => flightItem.DepartureTime)</small>
                             </div>
                         </div>
                     </div>

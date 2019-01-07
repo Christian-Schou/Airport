@@ -80,24 +80,22 @@ namespace Airport.WEB.Controllers
             return View(JsonConvert.DeserializeObject<List<Entities.Models.FlightDto>>(flightData));
         }
 
+        [HttpPost]
         // GET: Fligts/Details/Copenhagen/London
-        public async Task<IActionResult> Details([FromRoute] string fromLocation, string toLocation)
+        public async Task<IActionResult> Manage([FromForm] string fromLocation, [FromForm] string toLocation)
         {
 
-            //if (fromLocation || toLocation == null)
-            //{
-            //    return NotFound();
-            //}
-            var response = await _httpClient.GetAsync(BaseEndPoint.ToString() + $"/{fromLocation}/{toLocation}", HttpCompletionOption.ResponseHeadersRead);
+            // use HTTP client to read data from API. Move on once the headers have been read. Errors are caught slightly quicker this way.
+            var response = await _httpClient.GetAsync(BaseEndPoint + $"/{fromLocation}/{toLocation}", HttpCompletionOption.ResponseHeadersRead);
+            
+            // Make sure that we got a success status code in the headers. Returns an exception (and 500 status code) if not successful
             response.EnsureSuccessStatusCode();
-            var flightData = await response.Content.ReadAsStringAsync();
-            var flight = JsonConvert.DeserializeObject<FlightDto>(flightData);
-            if (flight == null)
-            {
-                return NotFound();
-            }
 
-            return View(flight);
+            // Turn the response body into a string
+            var data = await response.Content.ReadAsStringAsync();
+
+            // Treat the response body string as JSON, and deserialize it into a list of flights
+            return View(JsonConvert.DeserializeObject<List<Entities.Models.FlightDto>>(data));
         }
 
         // GET: Flights/AddFlight
@@ -149,44 +147,24 @@ namespace Airport.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [FromForm] Flight flight)
+        public async Task<IActionResult> Edit(int? id, [Bind("FlightId,AircraftType,FromLocation,ToLocation,DepartureTime,ArrivalTime")] Flight flight)
         {
-            var response = await _httpClient.GetAsync(BaseEndPoint.ToString() + $"/{id}",
-                HttpCompletionOption.ResponseHeadersRead);
-            response.EnsureSuccessStatusCode();
-
-            var flightData = await response.Content.ReadAsStringAsync();
-            var flightItem = JsonConvert.DeserializeObject<Flight>(flightData);
-
-            if (flightData == null)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Flight flightItemFromBody = new Flight(flight.FlightNumber, flight.AircraftType, flight.FromLocation, flight.ToLocation, flight.ArrivalTime, flight.DepartureTime);
-                    var postResponse = _httpClient.PostAsJsonAsync<Flight>(BaseEndPoint, flight);
-                    postResponse.Result.EnsureSuccessStatusCode();
+                    var response = await _httpClient.PutAsJsonAsync<Flight>(BaseEndPoint + $"/{id}", flight);
+                    response.EnsureSuccessStatusCode();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    //if (!FlightItemExists(flightItem.FlightNumber))
-                    //{
-                    //    return NotFound();
-                    //}
-                    //else
-                    //{
-                    //    throw;
-                    //}
+                    
                 }
 
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(flightItem);
+            return View(flight);
         }
 
         //private bool FlightItemExists(int id)

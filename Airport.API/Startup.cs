@@ -59,11 +59,7 @@ namespace Airport.API
                 //c.IncludeXmlComments(Path.Combine(basePath, fileName));
 
             });
-
-            //// On the MVC service, we can add JSON options
-            //services.AddMvc()
-            //        .AddMvcOptions(o => o.OutputFormatters.Add(
-            //            new XmlDataContractSerializerOutputFormatter()));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,8 +70,6 @@ namespace Airport.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
-
             applicationDbContext.EnsureSeedDataForContext();
 
             AutoMapper.Mapper.Initialize(cfg =>
@@ -85,9 +79,8 @@ namespace Airport.API
                 cfg.CreateMap<Entities.Flight, Entities.Models.FlightForUpdateDto>();
             });
 
-            app.UseMvc();
-
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
                 //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
@@ -97,6 +90,8 @@ namespace Airport.API
                 // c.SwaggerEndpoint("/swagger-original.json", "Swagger Petstore Original");
 
             });
+
+            app.UseMvc();
         }
     }
 }

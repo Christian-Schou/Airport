@@ -21,7 +21,7 @@ namespace Airport.API.Controllers
             _iUnitOfWork = iUnitOfWork;
         }
 
-        [HttpGet()]
+        [HttpGet]
         public IActionResult GetAllFlights()
         {
             var flightEntities = _iUnitOfWork.Flight.GetAllFlights();
@@ -66,13 +66,13 @@ namespace Airport.API.Controllers
 
             // We map to a Flight with Automapper
 
-            var flightResults = Mapper.Map<Flight>(flight);
+            var flightResults = Mapper.Map<List<Flight>>(flight);
 
             // After that, we return that flight dto
             return Ok(flightResults);
         }
 
-        // POST: api/gifts
+        // POST: api/flights
         [HttpPost]
         public async Task<IActionResult> AddFlight([FromBody] Flight flight)
         {
@@ -128,31 +128,7 @@ namespace Airport.API.Controllers
             return NoContent();
         }
 
-        // POST api/auction
-        [HttpPost]
-        public async Task<IActionResult> UpdateFlight([FromBody] Flight flight)
-        {
-            var flightItem = _iUnitOfWork.Flight.GetAllFlights().FirstOrDefault(item => item.FlightNumber == flight.FlightNumber);
-            
-            if (flightItem is null)
-            {
-                return NotFound("The flight doesn't exist");
-            }
-
-                flightItem.FlightNumber = flight.FlightNumber;
-                flightItem.AircraftType = flight.AircraftType;
-                flightItem.FromLocation = flight.FromLocation;
-                flightItem.ToLocation = flight.ToLocation;
-                flightItem.DepartureTime = flight.DepartureTime;
-                flightItem.ArrivalTime = flight.ArrivalTime;
-
-                _iUnitOfWork.Complete();
-               
-                return Ok();
-            
-
-        }
-
+        [HttpGet]
         private bool FlightExists(int id)
         {
             var flight = _iUnitOfWork.Flight.GetAllFlights().Any(f => f.FlightNumber == id);

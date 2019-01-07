@@ -8,56 +8,67 @@
     <br />
     <h2>Overview of flight departures and arrivals</h2>
 
-    
+    <form asp-action="Manage">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" name="fromLocation" class="form-control" placeholder="From location">
+            </div>
+            <div class="col">
+                <input type="text" name="toLocation" class="form-control" placeholder="To location">
+            </div>
+            <input type="submit" value="Search" class="btn btn-primary">
+        </div>
+    </form>
 
-        <table class="table">
-            <thead>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AircraftType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FromLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ToLocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DepartureTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ArrivalTime)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var flightItem in Model)
+            {
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AircraftType)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FromLocation)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ToLocation)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DepartureTime)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ArrivalTime)
-                    </th>
-                    <th>
-                        Actions
-                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => flightItem.AircraftType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flightItem.FromLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flightItem.ToLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flightItem.DepartureTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => flightItem.ArrivalTime)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@flightItem.FlightNumber">Edit flight</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var flightItem in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => flightItem.AircraftType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => flightItem.FromLocation)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => flightItem.ToLocation)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => flightItem.DepartureTime)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => flightItem.ArrivalTime)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@flightItem.FlightNumber">Edit flight</a>
-                        </td>
-                    </tr>
 
-                }
-            </tbody>
-        </table>
+            }
+        </tbody>
+    </table>
 </div>

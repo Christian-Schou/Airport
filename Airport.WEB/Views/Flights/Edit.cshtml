@@ -10,41 +10,44 @@
     <h4>Flight with id: @Html.DisplayFor(model => model.FlightNumber)</h4>
     <hr />
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="AircraftType" class="control-label"></label>
-                    <input asp-for="AircraftType" class="form-control" />
+                    <input asp-for="AircraftType" class="form-control" readonly />
                     <span asp-validation-for="AircraftType" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="FromLocation" class="control-label"></label>
-                    <input asp-for="FromLocation" class="form-control" />
-                    <span asp-validation-for="FromLocation" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ToLocation" class="control-label"></label>
-                    <input asp-for="ToLocation" class="form-control" />
-                    <span asp-validation-for="ToLocation" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ArrivalTime" class="control-label"></label>
-                    <input asp-for="ArrivalTime" class="form-control" />
-                    <span asp-validation-for="ArrivalTime" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DepartureTime" class="control-label"></label>
-                    <input asp-for="DepartureTime" class="form-control" />
-                    <span asp-validation-for="DepartureTime" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <div class="btn-group">
-                        <input type="submit" value="Update" class="btn btn-md btn-outline-secondary" />
-                        <button class="btn btn-md btn-outline-secondary" type="button" onclick="location.href='@Url.Action("Manage", "flights")'">Back to flight management</button>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="FromLocation" class="control-label"></label>
+                        <input asp-for="FromLocation" class="form-control" readonly />
+                        <span asp-validation-for="FromLocation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ToLocation" class="control-label"></label>
+                        <input asp-for="ToLocation" class="form-control" readonly />
+                        <span asp-validation-for="ToLocation" class="text-danger"></span>
                     </div>
                 </div>
+                <div class="form-row">
+                <div class="form-group col-md-6">
+                        <label asp-for="DepartureTime" class="control-label"></label>
+                        <input asp-for="DepartureTime" class="form-control" />
+                        <span asp-validation-for="DepartureTime" class="text-danger"></span>
+                    </div>
+                <div class="form-group col-md-6">
+                        <label asp-for="ArrivalTime" class="control-label"></label>
+                        <input asp-for="ArrivalTime" class="form-control" />
+                        <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="btn-group">
+                            <input type="submit" value="Update" class="btn btn-md btn-outline-secondary" />
+                            <button class="btn btn-md btn-outline-secondary" type="button" onclick="location.href='@Url.Action("Manage", "flights")'">Back to flight management</button>
+                        </div>
+                    </div>
             </form>
         </div>
     </div>

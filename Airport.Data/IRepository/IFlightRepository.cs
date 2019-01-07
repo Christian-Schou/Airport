@@ -13,7 +13,7 @@ namespace Airport.Data.IRepository
 
         Flight GetFlight(int flightNumber);
 
-        Flight GetFlightWithLocation(string fromLocation, string toLocation);
+        IEnumerable<Flight> GetFlightWithLocation(string fromLocation, string toLocation);
 
         void AddFlight(Flight flight);
 

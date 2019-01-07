@@ -37,6 +37,18 @@
                         <h4 class="text-white">Airport</h4>
                         <p class="text-muted">The Airport is an MVC project in ASP.NET core for an flight-company. The aiport is consuming an API to handle all flight requests.</p>
                     </div>
+                    @*<div class="col-sm-8 col-md-7 py-4">
+                        @await Html.PartialAsync("_ToLocation", Model.Select(item => item.ToLocation).Distinct())
+                    </div>
+                    <div class="col-sm-8 col-md-7 py-4">
+                        @await Html.PartialAsync("_FromLocation", Model.Select(item => item.FromLocation).Distinct())
+                    </div>*@
+
+                    <div class="sidebar">
+
+
+                    </div>
+
                     <div class="col-sm-4 offset-md-1 py-4">
                         <h4 class="text-white">Menu</h4>
                         <ul class="list-unstyled">
@@ -50,7 +62,7 @@
         </div>
         <div class="navbar navbar-dark bg-dark shadow-sm">
             <div class="container d-flex justify-content-between">
-                <a asp-area="" asp-controller="Auctions" asp-action="Index" class="navbar-brand d-flex align-items-center"><strong>Airport</strong></a>
+                <a asp-area="" asp-controller="Flights" asp-action="Index" class="navbar-brand d-flex align-items-center"><strong>Airport</strong></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -58,7 +70,7 @@
         </div>
     </header>
 
-    <partial name="_CookieConsentPartial" />
+    @*<partial name="_CookieConsentPartial" />*@
 
     @RenderBody()
 

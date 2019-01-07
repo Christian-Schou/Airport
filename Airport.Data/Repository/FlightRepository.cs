@@ -36,10 +36,11 @@ namespace Airport.Data.Repository
             return _applicationDbContext.Flights.FirstOrDefault(g => g.FlightNumber == flightNumber);
         }
 
-        public Flight GetFlightWithLocation(string fromLocation, string toLocation)
+        public IEnumerable<Flight> GetFlightWithLocation(string fromLocation, string toLocation)
         {
             // return the specified flight
-            return _applicationDbContext.Flights.FirstOrDefault(g => g.FromLocation == fromLocation || g.ToLocation == toLocation);
+            var flights = _applicationDbContext.Flights.Where(flight => flight.FromLocation == fromLocation && flight.ToLocation == toLocation);
+            return flights;
         }
 
         public void DeleteFlight(Flight flight)
